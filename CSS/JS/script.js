@@ -1,27 +1,21 @@
-const keys = document.querySelectorAll(".key");
+document.addEventListener("keydown", (e) => {
 
-function activateKey(letter) {
     const key = document.querySelector(
-        `.key[data-key="${letter.toUpperCase()}"]`
+        `[data-code="${e.code}"]`
     );
 
-    if (!key) return;
-
-    key.classList.add("active");
-
-    setTimeout(() => {
-        key.classList.remove("active");
-    }, 150);
-}
-
-// Fysiskt tangentbord
-document.addEventListener("keydown", (e) => {
-    activateKey(e.key);
+    if(key){
+        key.classList.add("active");
+    }
 });
 
-// Klick på virtuella tangenter
-keys.forEach(key => {
-    key.addEventListener("click", () => {
-        activateKey(key.dataset.key);
-    });
+document.addEventListener("keyup", (e) => {
+
+    const key = document.querySelector(
+        `[data-code="${e.code}"]`
+    );
+
+    if(key){
+        key.classList.remove("active");
+    }
 });
