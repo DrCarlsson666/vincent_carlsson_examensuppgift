@@ -93,10 +93,6 @@
     <div class="key" data-key="M">M</div>
 </div>
 
-<div class="row">
-    <div class="key2" data-key2="space">space</div>
-</div>
-
 <script>
 function glow(keyName){
     const key = document.querySelector(
@@ -112,21 +108,12 @@ function glow(keyName){
         key.classList.remove("active");
     },150);
 
-    if(!key2) return;
-
-key2.classList.add("active");
-
-setTimeout(()=>{
-    key2.classList.remove("active");
-},150);
+    if(!key) return;
 }
+key.classList.add("active");
 
 document.addEventListener("keydown",(e)=>{
     glow(e.key);
-});
-
-document.addEventListener("keydown",(e)=>{
-    glow(e.key2);
 });
 
 document.querySelectorAll(".key").forEach(key=>{
@@ -135,11 +122,6 @@ document.querySelectorAll(".key").forEach(key=>{
     });
 });
 
-document.querySelectorAll(".key2").forEach(key2=>{
-    key2.addEventListener("click",()=>{
-        glow(key2.dataset.key);
-    });
-});
 </script>
 
 </body>
