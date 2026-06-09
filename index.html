@@ -101,6 +101,7 @@
 function glow(keyName){
     const key = document.querySelector(
         `[data-key="${keyName.toUpperCase()}"]`
+        `[data-key2="${keyName.toUpperCase()}"]`
     );
 
     if(!key) return;
@@ -110,15 +111,33 @@ function glow(keyName){
     setTimeout(()=>{
         key.classList.remove("active");
     },150);
+
+    if(!key2) return;
+
+key2.classList.add("active");
+
+setTimeout(()=>{
+    key2.classList.remove("active");
+},150);
 }
 
 document.addEventListener("keydown",(e)=>{
     glow(e.key);
 });
 
+document.addEventListener("keydown",(e)=>{
+    glow(e.key2);
+});
+
 document.querySelectorAll(".key").forEach(key=>{
     key.addEventListener("click",()=>{
         glow(key.dataset.key);
+    });
+});
+
+document.querySelectorAll(".key2").forEach(key2=>{
+    key2.addEventListener("click",()=>{
+        glow(key2.dataset.key);
     });
 });
 </script>
